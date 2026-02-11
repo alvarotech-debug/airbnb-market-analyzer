@@ -1,0 +1,91 @@
+# =============================================================================
+# Airbnb Market Analyzer — Configuration
+# =============================================================================
+
+project:
+  name: "Airbnb Market Analyzer"
+  version: "1.0.0"
+
+# Target market location
+location:
+  city: "austin"
+  state: "tx"
+  country: "united-states"
+
+# Inside Airbnb data source
+data:
+  base_url: "https://data.insideairbnb.com"
+  # Set to true to auto-detect the latest available date
+  auto_detect_latest: true
+  # Manual override — set a specific date (YYYY-MM-DD) if auto-detect fails
+  manual_date: null
+  files:
+    - "listings.csv.gz"
+    - "calendar.csv.gz"
+    - "reviews.csv.gz"
+  geojson: "neighbourhoods.geojson"
+  paths:
+    raw: "data/raw"
+    sample: "data/sample"
+
+# Data cleaning thresholds
+cleaning:
+  price:
+    min: 10
+    max: 2000
+  # Listing must have at least this many reviews to be considered active
+  min_reviews: 1
+  # Maximum days since last review to be considered active
+  max_days_since_review: 365
+  # Minimum availability in next 30 days
+  min_availability_30: 0
+
+# Analysis parameters
+analysis:
+  # Price segmentation (USD per night)
+  segments:
+    budget:
+      min: 0
+      max: 100
+      color: "#2ecc71"
+      label: "Budget"
+    mid_range:
+      min: 100
+      max: 250
+      color: "#3498db"
+      label: "Mid-Range"
+    premium:
+      min: 250
+      max: 999999
+      color: "#e74c3c"
+      label: "Premium"
+  top_neighborhoods: 10
+  top_hosts: 20
+  # Austin-specific season definitions
+  high_season_months: [3, 4, 5, 6, 7, 8, 9, 10]
+  low_season_months: [11, 12, 1, 2]
+
+# Visualization settings
+visualization:
+  style: "seaborn-v0_8-whitegrid"
+  palette: "muted"
+  dpi: 300
+  format: "png"
+  figsize_default: [12, 6]
+  figsize_wide: [14, 6]
+  figsize_square: [10, 10]
+  font_title: 16
+  font_label: 12
+  font_tick: 10
+  colors:
+    primary: "#2c3e50"
+    secondary: "#3498db"
+    accent: "#e74c3c"
+    background: "#fafafa"
+    grid: "#ecf0f1"
+
+# Output paths
+output:
+  charts: "outputs/charts"
+  reports: "outputs/reports"
+  screenshots: "screenshots"
