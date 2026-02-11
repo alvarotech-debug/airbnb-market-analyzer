@@ -48,7 +48,7 @@ This project demonstrates the kind of analysis that helps investors, property ma
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/airbnb-market-analyzer.git
+git clone https://github.com/alvarotech-debug/airbnb-market-analyzer.git
 cd airbnb-market-analyzer
 
 # Create virtual environment
